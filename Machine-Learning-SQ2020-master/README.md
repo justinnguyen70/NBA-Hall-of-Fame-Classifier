@@ -1,7 +1,10 @@
 # Machine-Learning-SQ2020
-(1) Datasets
-Allstar.csv
+For training models check out the ipynb files
+
+Allstar.csv Datasets
+
 Brief description of what the dataset is about.
+
 This dataset has a complete list of players that were selected as “All-Stars” in the NBA, and the number of selections for their career. An all-star selection is a notable selection that shows that a player is one of the 24 best players that season. The more all-star selections, generally the better the player was during his career.
 Sizeof dataset: number of instances(rows)and attributes(columns).
 503 rows × 2 columns
@@ -30,6 +33,7 @@ ABA represents ABA all-star appearances. The ABA was from 1967-1976.
 We felt it would not make sense for us to visualize all star appearances since there are over 4000 NBA players and only 504 players have ever made all star teams meaning that most of the data points will lie at 0.  
  
 HallOfFamers.csv
+
 Hall of Famers is a list of all players that have been inducted into the Hall of Fame. This is the highest honor of the NBA where only a select number of players make it.
 Size Of Dataset: 199 rows × 4 columns
 First 5, Last 5
@@ -52,6 +56,7 @@ Achievement is the accolade list of the players.
 There was nothing to visualize in this dataset because we mainly used it for the names of hall of famers. The actual statistics that we will add to this dataset will be on the processed data file. 
  
 MVPs.csv
+
 MVP or Most-Valuable-Player is the best player during a season. It is the highest single-season honor.
 Shape: 41 Rows x 2 Columns 
 First 5, Last 5
@@ -73,6 +78,7 @@ Count represents the number of MVPS the player has won in their career.
 We felt it would not make sense for us to visualize MVPs since there are over 4000 NBA players and only 40 players have ever been MVPs. Most of the data points will lie at 0.  
  
 Seasons_Stats.csv
+
 Seasons_Stats is a list of every single season of a player and their respective statistics for that season. For example, if a player plays 15 seasons, there will be 15 rows for that player for each season they played. The stats will also be including in these rows.
 See Notebook.
 See Notebook.
@@ -84,7 +90,9 @@ Age is the player’s age.
 Team is the team the player played for.
 G through PTS are NBA statistics. All meaning of the stats can be found on the official NBA page. Some of these statistics will be dropped during pre-processing as they are irrelevant to the model of finding the probability of a player entering the hall of fame.
 See Notebook.
+
 allnba.csv
+
 All-NBA is an end of the season award, awarded to the best players at each position. There is an All-NBA first team (the best at each position), second (second best), and third (third best). This award is generally considered more valuable than an all-star.
 Size of Data Set: 277 rows × 5 columns
 First 5, Last 5
@@ -107,7 +115,9 @@ Name represents their first and last name.
 1st, 2nd, 3rd represent the number of selections to each category.
 Total is the total number of selections.
 We felt it would not make sense for us to visualize all nba appearances either since there are over 4000 NBA players and only 277 players have ever made all nba teams meaning that most of the data points will lie at 0.  
+
 player_data.csv
+
 Player data includes every single player in the NBA since the NBA was created. Along with the name, it includes the years they played, their position, height, weight, birthdate and college. 
 Shape: 4550 rows × 8 columns
 First 5, Last 5
@@ -131,18 +141,8 @@ college represents the college the basketball player went to.
 We mainly used this data file to grab names so there was nothing to visualize. 
 (b) See Notebook.
 
-(c)Exploratory data analysis (20pts)
-The purpose of exploratory data analysis is the process of performing preliminary study on data to discover patterns and to check assumptions for the problems you have defined in DAP1. Your tasks should include:
-Analysis of central tendency and dispersion for the attribute through descriptive statistics and data visualization.
-Analysis of relationship among attributes through descriptive statistics and data visualization. 
-Analyzing the data, we see that there is a clear distinction between hall of fame players and regular players that aren’t in the hall of fame. Every single statistic is significantly higher for hall of fame players. This verifies our assumption that hall of fame players are much better players and have much higher statistics. For example, the PER for Hall of Famers is 18 while the PER for regular players is 10. Additionally, the average Hall of Famer has 7 all star appearances while the average player has .4 all star appearances. Furthermore, every MVP is in the Hall of Fame, showing a strong correlation between winning an MVP and entering into the Hall of Fame.
-	However, when looking at the stats for regular players, it is important to keep in mind that some statistics may be skewed. For example, there are players that do not play a lot of games, however they boast high PER and other advanced stats. We discussed how “games played” should be another determining factor in entering the hall of fame, as some players may appear to have good stats, but have only played a few number of seasons. We also calculated a correlation between All-stars and PER for Hall of Famers, and there was a strong correlation of 0.6. The only reason this number wasn’t higher was because some players did not play as long or their statistics deteriorated as they went up in age.
 
-(d)Preliminary data analysis report (10 pts)
-A summary of your work in (b): Discuss what issues existed in your dataset what data preprocessing technique(s)were used to solve the problems.
-A summary of your work in (c): Interesting findings from the preliminary analysis
-
-In part b, we consolidated the number of files we had into two files. To consolidate the files, we had to first modify some of the excel files as the name attribute had special characters such as “*” at the end of the name. To do so, we had to mass delete a character from the excel file using some formulas. Additionally, in the notebook, we deleted irrelevant columns that provided no use in our overall goal of predicting Hall of Fame players. After that, we wanted to make sure each Hall of Fame row for the halloffamer.csv had columns of all-star appearances, all-nba appearances, MVP’s won, and their season statistics. This was all done in the notebook and consolidated into one file. 
+We consolidated the dataset into two files. To consolidate the files, we had to first modify some of the excel files as the name attribute had special characters such as “*” at the end of the name. To do so, we had to mass delete a character from the excel file using some formulas. Additionally, in the notebook, we deleted irrelevant columns that provided no use in our overall goal of predicting Hall of Fame players. After that, we wanted to make sure each Hall of Fame row for the halloffamer.csv had columns of all-star appearances, all-nba appearances, MVP’s won, and their season statistics. This was all done in the notebook and consolidated into one file. 
 Additionally, there were many NULL values as some of the older players didn’t have certain statistics since they didn’t exist back then. To deal with this issue, we filled in the NULL values with the average values as part of the data processing. Furthermore, we had to group by name and merge data frames to get the final halloffame.csv. This first file listed all the hall of fame players alongside their respective career statistics. This ultimately defines our baseline for getting into the hall of fame, as the averaged statistics represent the required career statistics to make it into the basketball hall of fame. This is incredibly important to our final goal because this baseline will be used to predict whether a current player will be able to enter the hall of fame by the end of their career. 
 The second file was all the statistics from players up until 2017. Not much modification is needed for this file, however we did use this file to get statistics for the Hall of Famers. The only modifications we did to the file was remove irrelevant columns. 
 Some of the interesting findings were that we found some Hall of Famers never were selected as an all-star. These hall of famers were obvious outliers and were mostly found in the pre-1980 NBA. We both discussed that we would like to remove those outliers as they would skew the data for the modern NBA, where you would have to be an all-star to make it to the Hall of Fame. Additionally, this was the case with all-nba selections and MVPs, however there were very few cases, and all of them were 30+ years old data. 
